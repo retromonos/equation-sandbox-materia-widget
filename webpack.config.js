@@ -2,7 +2,6 @@ const path = require('path')
 const srcPath = path.join(__dirname, 'src') + path.sep
 const outputPath = path.join(__dirname, 'build')
 const widgetWebpack = require('materia-widget-development-kit/webpack-widget')
-// const WebpackSyncShellPlugin = require('webpack-synchronizable-shell-plugin')
 
 const rules = widgetWebpack.getDefaultRules()
 const copy = widgetWebpack.getDefaultCopyList()
