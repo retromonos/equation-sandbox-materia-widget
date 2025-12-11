@@ -1,5 +1,6 @@
-require('../app')
-
+require('./app')
+require("./player.template.html")
+require("./player-template-controller")
 angular.module('equationSandbox')
 
 	.controller('CreatorController', ['$scope', '$http', function($scope, $http) {

@@ -8,49 +8,20 @@ const rules = widgetWebpack.getDefaultRules()
 const copy = widgetWebpack.getDefaultCopyList()
 const entries = {
 	"player": [
-		path.join(srcPath, "templates/player.html"),
-		path.join(srcPath, "templates/player.template.html"),
-		path.join(srcPath, "js/player.js"),
-		path.join(srcPath, "js/player-template-controller.js"),
-		path.join(srcPath, "sass/player.scss"),
-		path.join(srcPath, "sass/main.scss"),
+		path.join(srcPath, "player.html"),
+		path.join(srcPath, "player.js"),
+		path.join(srcPath, "player.scss"),
+		path.join(srcPath, "player.template.html"),
+		path.join(srcPath, "player-template-controller.js"),
 	],
 	"creator": [
-		path.join(srcPath, "templates/creator.html"),
-		path.join(srcPath, "js/creator.js"),
-		path.join(srcPath, "sass/creator.scss"),
-		path.join(srcPath, "sass/main.scss"),
+		path.join(srcPath, "creator.html"),
+		path.join(srcPath, "creator.js"),
+		path.join(srcPath, "creator.scss"),
+		path.join(srcPath, "player.template.html"),
+		path.join(srcPath, "player-template-controller.js"),
 	]
 }
-
-// const shims = [
-// 	'core-js/es/symbol'
-// ]
-
-// entries['assets/js/creator.js'] = [
-// 	...shims,
-// 	path.join(__dirname, 'src', 'js', 'creator.js')
-// ]
-// entries['assets/js/player.js'] = [
-// 	...shims,
-// 	path.join(__dirname, 'src', 'js', 'player.js')
-// ]
-// entries['assets/js/player-template-controller.js'] = [
-// 	...shims,
-// 	path.join(__dirname, 'src', 'js', 'player-template-controller.js'),
-// ]
-// entries['assets/stylesheets/creator.css'] = [
-// 	path.join(__dirname, 'src', 'sass', 'creator.scss'),
-// 	path.join(__dirname, 'src', 'templates', 'creator.html')
-// ]
-// entries['assets/stylesheets/player.css'] = [
-// 	path.join(__dirname, 'src', 'sass', 'player.scss'),
-// 	path.join(__dirname, 'src', 'templates', 'player.html'),
-// 	path.join(__dirname, 'src', 'templates', 'player.template.html')
-// ]
-// entries['assets/css/main.css'] = [
-// 	path.join(__dirname, 'src', 'sass', 'main.scss'),
-// ]
 
 const babelLoaderWithPolyfillRule = {
 	test: /\.js$/,
@@ -82,6 +53,10 @@ const customCopy = copy.concat([
 		to: path.join(outputPath, 'vendor', 'mathquill')
 	},
 	{
+		from: path.join(srcPath, "player.template.html"),
+		to: path.join(outputPath, "player.template.html")
+	},
+	{
 		from: path.join(__dirname, 'src','_guides','assets'),
 		to: path.join(outputPath, 'guides', 'assets'),
 		toType: 'dir'
@@ -96,13 +71,5 @@ let options = {
 }
 
 const ourFinalWebpackConfig = widgetWebpack.getLegacyWidgetBuildConfig(options)
-
-// ourFinalWebpackConfig.plugins.push(new WebpackSyncShellPlugin({
-// 	onBuildStart: {
-// 		scripts: ['yarn peg:build'],
-// 		blocking: true,
-// 		parallel: false
-// 	}
-// }))
 
 module.exports = ourFinalWebpackConfig

@@ -1,5 +1,5 @@
 import latexParser from './latex-parser'
-
+require("./player.template.html")
 angular.module('equationSandbox')
 	.controller('PlayerTemplateController', ['$scope', '$window', '$http', '$timeout', '$rootScope', function($scope, $window, $http, $timeout, $rootScope) {
 		"use strict";

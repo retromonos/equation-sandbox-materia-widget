@@ -1,7 +1,6 @@
 ---
 general:
   name: Equation Sandbox
-  group: Materia
   height: 600
   width: 800
   in_catalog: Yes
@@ -30,4 +29,3 @@ meta_data:
     Manipulating the variables of the equation alter the graph, allowing students to learn first-hand how a function graph is created.
   excerpt: >
     Interactive graphs from parameterized equations
-

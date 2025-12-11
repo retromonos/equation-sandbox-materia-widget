@@ -11,8 +11,7 @@
     "materia-widget-development-kit": "^3.0.4",
     "mathquill": "0.9.1",
     "onchange": "^4.0.0",
-    "pegjs": "^0.8.0",
-    "core-js": "^3.47.0"
+    "pegjs": "^0.10.0"
   },
   "resolutions": {
     "jest/**/tough-cookie": "2.3.4"
@@ -26,7 +25,7 @@
     "build-dev": "mwdk-build-dev",
     "test": "TZ='America/New_York' jest --verbose",
     "test-ci": "TZ='America/New_York' CI=true jest --ci --useStderr --coverage --coverageReporters text-summary cobertura",
-    "peg:build": "pegjs --cache ./src/peg/latex.pegjs ./src/js/latex-parser.js",
+    "peg:build": "pegjs --cache -o ./src/latex-parser.js ./src/peg/latex.pegjs ",
     "peg:watch": "onchange './src/peg/latex.pegjs' -- yarn peg:build"
   },
   "jest": {
