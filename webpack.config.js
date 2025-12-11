@@ -2,46 +2,55 @@ const path = require('path')
 const srcPath = path.join(__dirname, 'src') + path.sep
 const outputPath = path.join(__dirname, 'build')
 const widgetWebpack = require('materia-widget-development-kit/webpack-widget')
-const WebpackSyncShellPlugin = require('webpack-synchronizable-shell-plugin')
+// const WebpackSyncShellPlugin = require('webpack-synchronizable-shell-plugin')
 
 const rules = widgetWebpack.getDefaultRules()
 const copy = widgetWebpack.getDefaultCopyList()
-const entries = {}
+const entries = {
+	"player": [
+		path.join(srcPath, "templates/player.html"),
+		path.join(srcPath, "templates/player.template.html"),
+		path.join(srcPath, "js/player.js"),
+		path.join(srcPath, "js/player-template-controller.js"),
+		path.join(srcPath, "sass/player.scss"),
+		path.join(srcPath, "sass/main.scss"),
+	],
+	"creator": [
+		path.join(srcPath, "templates/creator.html"),
+		path.join(srcPath, "js/creator.js"),
+		path.join(srcPath, "sass/creator.scss"),
+		path.join(srcPath, "sass/main.scss"),
+	]
+}
 
-const shims = [
-	'core-js/es6/symbol'
-]
+// const shims = [
+// 	'core-js/es/symbol'
+// ]
 
-entries['assets/js/creator.js'] = [
-	...shims,
-	path.join(__dirname, 'src', 'js', 'creator.js')
-]
-entries['assets/js/player.js'] = [
-	...shims,
-	path.join(__dirname, 'src', 'js', 'player.js')
-]
-entries['assets/js/player-template-controller.js'] = [
-	...shims,
-	path.join(__dirname, 'src', 'js', 'player-template-controller.js'),
-]
-entries['assets/stylesheets/creator.css'] = [
-	path.join(__dirname, 'src', 'sass', 'creator.scss'),
-	path.join(__dirname, 'src', 'templates', 'creator.html')
-]
-entries['assets/stylesheets/player.css'] = [
-	path.join(__dirname, 'src', 'sass', 'player.scss'),
-	path.join(__dirname, 'src', 'templates', 'player.html'),
-	path.join(__dirname, 'src', 'templates', 'player.template.html')
-]
-entries['assets/css/main.css'] = [
-	path.join(__dirname, 'src', 'sass', 'main.scss'),
-]
-entries['guides/creator.temp.html'] = [
-	path.join(__dirname, 'src', '_guides', 'creator.md')
-]
-entries['guides/player.temp.html'] = [
-	path.join(__dirname, 'src', '_guides', 'player.md')
-]
+// entries['assets/js/creator.js'] = [
+// 	...shims,
+// 	path.join(__dirname, 'src', 'js', 'creator.js')
+// ]
+// entries['assets/js/player.js'] = [
+// 	...shims,
+// 	path.join(__dirname, 'src', 'js', 'player.js')
+// ]
+// entries['assets/js/player-template-controller.js'] = [
+// 	...shims,
+// 	path.join(__dirname, 'src', 'js', 'player-template-controller.js'),
+// ]
+// entries['assets/stylesheets/creator.css'] = [
+// 	path.join(__dirname, 'src', 'sass', 'creator.scss'),
+// 	path.join(__dirname, 'src', 'templates', 'creator.html')
+// ]
+// entries['assets/stylesheets/player.css'] = [
+// 	path.join(__dirname, 'src', 'sass', 'player.scss'),
+// 	path.join(__dirname, 'src', 'templates', 'player.html'),
+// 	path.join(__dirname, 'src', 'templates', 'player.template.html')
+// ]
+// entries['assets/css/main.css'] = [
+// 	path.join(__dirname, 'src', 'sass', 'main.scss'),
+// ]
 
 const babelLoaderWithPolyfillRule = {
 	test: /\.js$/,
@@ -88,13 +97,12 @@ let options = {
 
 const ourFinalWebpackConfig = widgetWebpack.getLegacyWidgetBuildConfig(options)
 
-ourFinalWebpackConfig.plugins.push(new WebpackSyncShellPlugin({
-	onBuildStart: {
-		scripts: ['yarn peg:build'],
-		blocking: true,
-		parallel: false
-	}
-}))
+// ourFinalWebpackConfig.plugins.push(new WebpackSyncShellPlugin({
+// 	onBuildStart: {
+// 		scripts: ['yarn peg:build'],
+// 		blocking: true,
+// 		parallel: false
+// 	}
+// }))
 
 module.exports = ourFinalWebpackConfig
-
