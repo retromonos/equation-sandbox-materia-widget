@@ -20,9 +20,9 @@
     "sass-graph": "^2.1.1"
   },
   "scripts": {
-    "start": "mwdk-start",
+    "start": "yarn peg:build & mwdk-start",
     "build": "yarn peg:build & mwdk-build-prod",
-    "build-dev": "mwdk-build-dev",
+    "build-dev": "yarn peg:build & mwdk-build-dev",
     "test": "TZ='America/New_York' jest --verbose",
     "test-ci": "TZ='America/New_York' CI=true jest --ci --useStderr --coverage --coverageReporters text-summary cobertura",
     "peg:build": "pegjs --cache -o ./src/latex-parser.js ./src/peg/latex.pegjs ",

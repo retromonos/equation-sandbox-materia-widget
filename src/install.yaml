@@ -18,7 +18,6 @@ files:
   flash_version: 10
 score:
   is_scorable: No
-  score_module: EquationSandbox
 meta_data:
   features:
     - Customizable
@@ -29,3 +28,5 @@ meta_data:
     Manipulating the variables of the equation alter the graph, allowing students to learn first-hand how a function graph is created.
   excerpt: >
     Interactive graphs from parameterized equations
+  update_method: github
+  repo: ucfopen/equation-sandbox-materia-widget
